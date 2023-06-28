@@ -5,7 +5,7 @@
 
 1. Start IOx
 ```bash
-cargo run -- run all-in-one -vv --catalog-dsn=memory --router-http-bind=0.0.0.0:8080 --querier-grpc-bind=0.0.0.0:8082
+./target/release/influxdb_iox run all-in-one -vv --catalog-dsn=memory --router-http-bind=0.0.0.0:8080 --querier-grpc-bind=0.0.0.0:8082
 ```
 
 2. Start Jaegar, HotRODs, and Jaegar InfluxDB
