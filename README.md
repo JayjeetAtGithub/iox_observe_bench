@@ -18,3 +18,7 @@ docker compose --file demo/docker-compose.yml --project-directory . up --abort-o
 python3 gen_trace.py
 ```
 
+4. Execute queries
+```bash
+python3 query.py
+```
