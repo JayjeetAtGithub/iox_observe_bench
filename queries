@@ -1,0 +1,1 @@
+SELECT "trace_id", MAX("time") AS t FROM "spans" WHERE spans."service.name" = 'frontend' AND "time" >= to_timestamp(1687960353941000000) AND "time" <= to_timestamp(1687963953941000000) GROUP BY "trace_id" ORDER BY t DESC LIMIT 1000
