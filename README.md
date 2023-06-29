@@ -2,7 +2,6 @@
 
 ### Running Instructions
 
-
 1. Start IOx
 ```bash
 ./target/release/influxdb_iox run all-in-one -vv --catalog-dsn=memory --router-http-bind=0.0.0.0:8080 --querier-grpc-bind=0.0.0.0:8082
@@ -22,3 +21,8 @@ python3 gen_trace.py
 ```bash
 python3 query.py
 ```
+
+
+### Benchmarks
+
+1. Num traces: 1, 10, 100, 1000, 10000, 100000, 1000000
