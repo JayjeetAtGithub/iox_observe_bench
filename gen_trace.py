@@ -1,5 +1,6 @@
 import requests
 import random
+import sys
 import multiprocessing as mp
 from concurrent.futures import ThreadPoolExecutor
 
@@ -14,7 +15,7 @@ if __name__ == "__main__":
     dispatch_url = "http://localhost:8090/dispatch"
 
     with ThreadPoolExecutor(max_workers=mp.cpu_count()) as executor:
-        for i in range(100000):
+        for i in range(int(sys.argv[1])):
             config_params = {"nonse": random.uniform(1.1, 1.9)}
             executor.submit(GET_req, config_url, config_params)
 

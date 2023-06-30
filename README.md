@@ -4,17 +4,18 @@
 
 1. Start IOx
 ```bash
-./target/release/influxdb_iox run all-in-one -vv --catalog-dsn=memory --router-http-bind=0.0.0.0:8080 --querier-grpc-bind=0.0.0.0:8082
+./start_iox.sh
 ```
 
 2. Start Jaegar, HotRODs, and Jaegar InfluxDB
 ```bash
-docker compose --file demo/docker-compose.yml --project-directory . up --abort-on-container-exit --remove-orphans
+./start_jaegar.sh
 ```
 
 3. Generate traces using HotRODs
 ```bash
-python3 gen_trace.py
+python3 gen_trace.py [seed]
+watch ./watch_spans.sh
 ```
 
 4. Execute queries
