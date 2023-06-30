@@ -2,6 +2,15 @@
 
 ### Running Instructions
 
+0. Clone the repository.
+```bash
+git clone git@github.com:JayjeetAtGithub/iox_observe_bench
+cd iox_observe_bench/
+python3 -m venv venv
+source venv/bin/activate.fish
+pip install -r requirements.txt
+```
+
 1. Start IOx.
 ```bash
 git clone git@github.com:JayjeetAtGithub/influxdb_iox iox/
