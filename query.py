@@ -12,11 +12,14 @@ if __name__ == "__main__":
         metadata={"bucket-name": "otel_otel"},
     )
 
-    s = time.time()
-    info = client.execute('SELECT "trace_id", MAX("time") AS t FROM "spans" WHERE spans."service.name" = \'frontend\' AND "time" >= to_timestamp(1687960353941000000) AND "time" <= to_timestamp(1687963953941000000) GROUP BY "trace_id" ORDER BY t DESC LIMIT 1000')
-    reader = client.do_get(info.endpoints[0].ticket)
-    table = reader.read_all()
-    e = time.time()
-    print(table)
-    print("\n\n")
-    print("Read ", table.num_rows, " rows in ", e - s, " secs")
+    for i in range(10):
+        s = time.time()
+        # last hour
+        query1 = 'SELECT "trace_id", MAX("time") AS t FROM \'spans\' WHERE "service.name" = \'frontend\' AND "time" >= to_timestamp(1687995875961000000) AND "time" <= to_timestamp(1688168675961000000) GROUP BY "trace_id" ORDER BY t DESC LIMIT 1000'
+        query2 = 'SELECT "trace_id", MAX("time") AS t FROM \'spans\' WHERE "service.name" = \'frontend\' GROUP BY "trace_id" ORDER BY t DESC'
+        info = client.execute(query2)
+
+        reader = client.do_get(info.endpoints[0].ticket)
+        table = reader.read_all()
+        e = time.time()
+        print(e - s)
