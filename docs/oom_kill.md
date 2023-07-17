@@ -28,4 +28,11 @@ Then execute the following SQL query,
 
 3. Wait for IOx to get killed by the OOM killer and a heaptrack `.gz` file to be generated.
 
-4. Open the `.gz` files with the `heaptrack_gui` to generate the flamegraph. Some already generated profiles and flamegraphs can be found in the `heaptrack_profiles` directory.
+4. Open the `.gz` files with the `heaptrack_gui` to generate the flamegraph. Some already generated profiles and flamegraphs can be found in the `heaptrack_profiles` directory. Alternatively, you can also generate the flamegraph in `.svg` file using `heaptrack_print`,
+
+```bash
+heaptrack_print -f heaptrack.app.pid.gz -a -F stacks.txt
+git clone https://github.com/brendangregg/FlameGraph
+cd FlameGraph/
+./flamegraph.pl --title "allocations" --colors mem --countname allocations < stacks.txt > heaptrack.app.pid.svg
+```
