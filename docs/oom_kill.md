@@ -6,7 +6,7 @@ On making a `Find Traces` query from Jaegar UI, which makes a query like this ()
 
 * OS: Debian 11 Bullseye
 * DRAM: 32GB
-* IOx version: 85f03acbdff859ed4eeed11b88c6fdb2e444e557
+* IOx version: 33e41fc5cbca33dbd6021c0556b281488883b547
 * Rust version: 1.70.0 (90c541806 2023-05-31)
 * Cargo version: 1.70.0 (ec8a8a0ca 2023-04-25)
 
