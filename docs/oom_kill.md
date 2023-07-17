@@ -1,4 +1,14 @@
-# Reproducing the Issue
+## Issue
+
+On making a Find Traces query from Jaegar, which makes a query like this (), IOx ends up using all of the available DRAM and eventually gets killed the OOM killer in Linux. 
+
+## System Specifications
+
+OS: Debian 11 Bullseye
+DRAM: 32GB
+IOx version: 85f03acbdff859ed4eeed11b88c6fdb2e444e557
+
+## Reproducing the Issue
 
 1. Install dependencies.
 ```bash
