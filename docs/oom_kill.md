@@ -34,5 +34,5 @@ Then execute the following SQL query,
 heaptrack_print -f heaptrack.app.pid.gz -a -F stacks.txt
 git clone https://github.com/brendangregg/FlameGraph
 cd FlameGraph/
-./flamegraph.pl --title "allocations" --colors mem --countname allocations < stacks.txt > heaptrack.app.pid.svg
+./flamegraph.pl --title "heaptrack" --colors mem --countname allocations < stacks.txt > heaptrack.app.pid.svg
 ```
