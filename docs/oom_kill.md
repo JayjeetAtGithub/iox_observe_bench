@@ -1,5 +1,11 @@
 # Reproducing the Issue
 
+0. Install dependencies.
+```bash
+cargo install cargo-with
+sudo apt-get install heaptrack heaptrack-gui
+```
+
 1. Run IOx (release) with heaptrack enabled in a terminal using `cargo-with`.
 ```bash
 export INFLUXDB_IOX_ROUTER_HTTP_BIND_ADDR=0.0.0.0:8080
