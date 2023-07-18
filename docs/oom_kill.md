@@ -1,6 +1,16 @@
 ## Issue Description
 
-On making a `Find Traces` query from Jaegar UI, which makes a query like this (), IOx ends up using all of the available DRAM and eventually gets killed the OOM killer in Linux. 
+On making a `Find Traces` query from Jaegar UI, which does a `GROUP BY` operation on a high-cardinality field, and makes a query like,
+
+```sql
+SELECT trace_id, MAX(time)
+FROM traces
+GROUP BY trace_id
+ORDER BY MAX(time) DESC
+LIMIT 1
+```
+
+IOx ends up using all of the available DRAM and eventually gets killed the OOM killer in Linux. 
 
 ## System Specifications
 
