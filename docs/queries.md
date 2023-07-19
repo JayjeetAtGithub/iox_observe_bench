@@ -6,7 +6,7 @@
 
 # Does not run out of memory
 
-3. SELECT "trace_id" as t FROM 'spans' WHERE "service.name" = 'frontend' AND "time" >= to_timestamp(1688713200000000000) AND "time" <= to_timestamp(1689000240000000000) LIMIT 20;
+3. SELECT "trace_id" FROM 'spans' WHERE "service.name" = 'frontend' AND "time" >= to_timestamp(1688713200000000000) AND "time" <= to_timestamp(1689000240000000000) LIMIT 20;
 
 4. SELECT * FROM 'spans' WHERE "trace_id" IN ('00000000000000000000267cc6e91edb');
 
