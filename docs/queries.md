@@ -1,11 +1,11 @@
 # Runs out of Memory, Gets killed by OOM
 
-1. 
+1. Group By, order by, and filter.
 ```
 SELECT "trace_id", MAX("time") AS t FROM 'spans' WHERE "service.name" = 'frontend' AND "time" >= to_timestamp(1688713200000000000) AND "time" <= to_timestamp(1689000240000000000) GROUP BY "trace_id" ORDER BY t DESC LIMIT 20;
 ```
 
-2. 
+2. Group by and filter only.
 ```
 SELECT "trace_id" FROM 'spans' WHERE "service.name" = 'frontend' AND "time" >= to_timestamp(1688713200000000000) AND "time" <= to_timestamp(1689000240000000000) GROUP BY "trace_id" LIMIT 20;
 ```
@@ -45,7 +45,7 @@ GlobalLimitExec: skip=0, fetch=20
 
 # Does not run out of memory
 
-3. 
+3. Simple selection of `trace_id`'s within a time range.
 ```
 SELECT "trace_id" FROM 'spans' WHERE "service.name" = 'frontend' AND "time" >= to_timestamp(1688713200000000000) AND "time" <= to_timestamp(1689000240000000000) LIMIT 20;
 ```
