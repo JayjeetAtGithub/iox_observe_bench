@@ -1,4 +1,4 @@
-# Runs out of Memory, Gets killed by OOM
+# Query Plan Analysis
 
 1. Group By, order by, and filter.
 ```
