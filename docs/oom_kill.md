@@ -22,6 +22,8 @@ IOx ends up using all of the available DRAM and eventually gets killed the OOM k
 
 ## Reproducing the Issue
 
+### In IOx server
+
 1. Install dependencies.
 ```bash
 cargo install cargo-with
@@ -59,4 +61,18 @@ heaptrack_print -f heaptrack.app.pid.gz -a -F stacks.txt
 git clone https://github.com/brendangregg/FlameGraph
 cd FlameGraph/
 ./flamegraph.pl --title "heaptrack" --colors mem --countname allocations < stacks.txt > heaptrack.app.pid.svg
+```
+
+### In DataFusion test
+
+1. Clone fork of `arrow-datafusion` and checkout the branch with the reproducer test.
+```bash
+git clone https://github.com/JayjeetAtGithub/arrow-datafusion
+cd arrow-datafusion/
+git checkout spm-debug-inf
+```
+
+2. Execute the reproducer test.
+```bash
+cargo test --package datafusion --lib -- physical_plan::sorts::sort_preserving_merge::tests::test_dict_merge_infinite --exact --nocapture
 ```
