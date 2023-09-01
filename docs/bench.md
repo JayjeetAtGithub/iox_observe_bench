@@ -1,5 +1,16 @@
 ## Benchmarking Row conversion on low and high cardinality dicts W/ dict preserving
 
+### Setting Up
+
+```bash
+git clone https://github.com/JayjeetAtGithub/arrow-rs
+cd arrow-rs
+git checkout sort-fix-bench
+cargo bench --bench row_format "row_conv_" 
+```
+
+### With `RowConverter`
+
 ```bash
 convert_columns row_conv_low_card_preserve
                         time:   [74.488 µs 75.092 µs 75.683 µs]
@@ -34,5 +45,7 @@ Found 9 outliers among 100 measurements (9.00%)
   4 (4.00%) low mild
   2 (2.00%) high mild
 ```
+
+### With `CardinalityAwareRowConverter`
 
 **Observation:** For low cardinality, preserving dict is beneficial, but for high cardinality, preserving is highly damaging.
