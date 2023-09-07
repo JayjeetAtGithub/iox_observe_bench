@@ -7,7 +7,7 @@ SELECT trace_id, MAX(time)
 FROM traces
 GROUP BY trace_id
 ORDER BY MAX(time) DESC
-LIMIT 1
+LIMIT 20;
 ```
 
 IOx ends up using all of the available DRAM and eventually gets killed the OOM killer in Linux. 
