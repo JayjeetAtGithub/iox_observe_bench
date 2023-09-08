@@ -57,10 +57,10 @@ Then execute the following SQL query,
 6. Open the `.gz` files with the `heaptrack_gui` to generate the flamegraph. Some already generated profiles and flamegraphs can be found in the `heaptrack_profiles` directory. Alternatively, you can also generate the flamegraph in `.svg` file using `heaptrack_print`,
 
 ```bash
-heaptrack_print -f heaptrack.app.pid.gz -a -F stacks.txt
+heaptrack_print -f heaptrack.gz -a -F stacks.txt
 git clone https://github.com/brendangregg/FlameGraph
 cd FlameGraph/
-./flamegraph.pl --title "heaptrack" --colors mem --countname allocations < stacks.txt > heaptrack.app.pid.svg
+./flamegraph.pl --title "heaptrack" --colors mem --countname allocations < ../stacks.txt > heaptrack.svg
 ```
 
 ### In DataFusion test
