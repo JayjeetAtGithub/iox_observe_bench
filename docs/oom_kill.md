@@ -54,7 +54,7 @@ Then execute the following SQL query,
 
 5. Wait for IOx to get killed by the OOM killer and a heaptrack `.gz` file to be generated.
 
-6. Open the `.gz` files with the `heaptrack_gui` to generate the flamegraph. Some already generated profiles and flamegraphs can be found in the `heaptrack_profiles` directory. Alternatively, you can also generate the flamegraph in `.svg` file using `heaptrack_print`,
+6. Open the `.gz` files with the `heaptrack_gui` to generate the flamegraph. Some already generated profiles and flamegraphs can be found in the `profiles` directory. Alternatively, you can also generate the flamegraph in `.svg` file using `heaptrack_print`,
 
 ```bash
 heaptrack_print -f heaptrack.gz -a -F stacks.txt
