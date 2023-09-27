@@ -77,3 +77,12 @@ Found 20 outliers among 100 measurements (20.00%)
 ```
 
 **Observation:** For low cardinality, preserving dict is beneficial, but for high cardinality, preserving is highly damaging. Also, no regression is observed while moving from `RowConverter` to `CardinalityAwareRowConverter`.
+
+
+## Determing the value of `LOW_CARDINALITY_THRESHOLD`
+
+To determine the most appropriate value of the low cardinality threshold, we designed an experiment where we used the `RowConverter` to convert batches having sort fields with cardinalities ranging from `1` to `500000`. We repeated the experiment twice, turning the dictionary preserving on and off. We used a randomly generated record batch with `1000` rows and a schema  `a: dict<int32,utf8>, b: int32`. The code for the experiment can be found [here](https://github.com/JayjeetAtGithub/arrow-datafusion/commit/b05919fb0b8da95b956d4270fe33b3ec921dc6ed). The result from this experiment is shown in the plot below and the absolute numbers can be found [here](https://docs.google.com/spreadsheets/d/1ELfJaLx_VydYS_K2CSkvs1dbn2FaenpYpXxiSHjvI8M/edit?usp=sharing). 
+
+![determining-low-card-threshold](./chart.png)
+
+**Observation:** As evident from the plot, we see that dictionary preservation keeps benefiting the row conversion till a cardinality of `~500` (for the sort fields), where the performance with and without dictionary preservation coincides. After `500`, dictionary preservation becomes damaging quickly. Hence, we decide to use `512` as our threshold for low cardinality.
